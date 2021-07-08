@@ -6,11 +6,10 @@ const createScene = function () {
   const scene = new BABYLON.Scene(engine);
 
   // create box
-  const box = BABYLON.MeshBuilder.CreateBox("box", {
-    width: 2,
-    height: 1.5,
-    depth: 3,
-  });
+  const box = BABYLON.MeshBuilder.CreateBox("box", {}); //unit cube
+  box.scaling.x = 2;
+  box.scaling.y = 1.5;
+  box.scaling.z = 3;
 
   //   REUSUABLE CUBIC BOX
   //   const box = BABYLON.MeshBuilder.CreateBox("box", {}); //unit cube
