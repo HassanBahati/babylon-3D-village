@@ -21,16 +21,6 @@ const createScene = function () {
     new BABYLON.Vector3(1, 1, 0)
   );
 
-  // create a ground
-  const ground = BABYLON.MeshBuilder.CreateGround("ground", {
-    width: 10,
-    height: 10,
-  });
-  //   make gground grass
-  const groundMat = new BABYLON.StandardMaterial("groundMat");
-  groundMat.diffuseColor = new BABYLON.Color3(0, 1, 0);
-  ground.material = groundMat; //Place the material property of the ground
-
   //   // create box
   //   const box = BABYLON.MeshBuilder.CreateBox("box", {}); //unit cube
   //   box.scaling.x = 2;
@@ -66,10 +56,42 @@ const createScene = function () {
   roof.rotation.z = Math.PI / 2;
   roof.position.y = 1.22;
 
-  //   ADDING TEXTURE TO BOX
-
+  // create a ground
+  const ground = BABYLON.MeshBuilder.CreateGround("ground", {
+    width: 10,
+    height: 10,
+  });
   const material = new BABYLON.StandardMaterial("name", scene);
+  //   make gground grass
+  const groundMat = new BABYLON.StandardMaterial("groundMat");
+  groundMat.diffuseColor = new BABYLON.Color3(0, 1, 0);
+  ground.material = groundMat; //Place the material property of the ground
 
+  // COLORS
+  new BABYLON.Color3.Red();
+  new BABYLON.Color3.Green();
+  new BABYLON.Color3.Blue();
+  new BABYLON.Color3.Black();
+  new BABYLON.Color3.White();
+  new BABYLON.Color3.Purple();
+  new BABYLON.Color3.Magenta();
+  new BABYLON.Color3.Yellow();
+  new BABYLON.Color3.Gray(), new BABYLON.Color3.Teal();
+
+  // texture for ground and box
+  const roofMat = new BABYLON.StandardMaterial("roofMat");
+  roofMat.diffuseTexture = new BABYLON.Texture(
+    "https://assets.babylonjs.com/environments/roof.jpg",
+    scene
+  );
+  const boxMat = new BABYLON.StandardMaterial("boxMat");
+  boxMat.diffuseTexture = new BABYLON.Texture(
+    "https://www.babylonjs-playground.com/textures/floor.png"
+  );
+  roof.material = roofMat;
+  box.material = boxMat;
+
+  
   // add continuous sound
   const sound = new BABYLON.Sound(
     "heroes tonight",
@@ -98,3 +120,15 @@ engine.runRenderLoop(function () {
 window.addEventListener("resize", function () {
   engine.resize();
 });
+
+// COLORS
+// new BABYLON.Color3.Red();
+// new BABYLON.Color3.Green();
+// new BABYLON.Color3.Blue();
+// new BABYLON.Color3.Black();
+// new BABYLON.Color3.White();
+// new BABYLON.Color3.Purple();
+// new BABYLON.Color3.Magenta();
+// new BABYLON.Color3.Yellow();
+// new BABYLON.Color3.Gray(),
+// new BABYLON.Color3.Teal();
