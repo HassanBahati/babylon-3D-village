@@ -5,6 +5,32 @@ const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engi
 const createScene = function () {
   const scene = new BABYLON.Scene(engine);
 
+  // create  a camera
+  const camera = new BABYLON.ArcRotateCamera(
+    "camera",
+    -Math.PI / 2,
+    Math.PI / 2.5,
+    15,
+    new BABYLON.Vector3(0, 0, 0)
+  );
+  camera.attachControl(canvas, true);
+
+  // add light
+  const light = new BABYLON.HemisphericLight(
+    "light",
+    new BABYLON.Vector3(1, 1, 0)
+  );
+
+  // create a ground
+  const ground = BABYLON.MeshBuilder.CreateGround("ground", {
+    width: 10,
+    height: 10,
+  });
+  //   make gground grass
+  const groundMat = new BABYLON.StandardMaterial("groundMat");
+  groundMat.diffuseColor = new BABYLON.Color3(0, 1, 0);
+  ground.material = groundMat; //Place the material property of the ground
+
   //   // create box
   //   const box = BABYLON.MeshBuilder.CreateBox("box", {}); //unit cube
   //   box.scaling.x = 2;
@@ -29,7 +55,8 @@ const createScene = function () {
   //   box.rotation.y = BABYLON.Tools.ToRadians(45);
 
   const box = BABYLON.MeshBuilder.CreateBox("box", {});
-  box.position.y = 0.5;
+  // move box above ground
+  box.position.y = 0.5; //box created with default size so height is 1
   const roof = BABYLON.MeshBuilder.CreateCylinder("roof", {
     diameter: 1.3,
     height: 1.2,
@@ -39,30 +66,9 @@ const createScene = function () {
   roof.rotation.z = Math.PI / 2;
   roof.position.y = 1.22;
 
-  // create  a camera
-  const camera = new BABYLON.ArcRotateCamera(
-    "camera",
-    -Math.PI / 2,
-    Math.PI / 2.5,
-    15,
-    new BABYLON.Vector3(0, 0, 0)
-  );
-  camera.attachControl(canvas, true);
+  //   ADDING TEXTURE TO BOX
 
-  // add light
-  const light = new BABYLON.HemisphericLight(
-    "light",
-    new BABYLON.Vector3(1, 1, 0)
-  );
-
-  // create a ground
-  const ground = BABYLON.MeshBuilder.CreateGround("ground", {
-    width: 10,
-    height: 10,
-  });
-
-  // move box above ground
-  box.position.y = 0.5; //box created with default size so height is 1
+  const material = new BABYLON.StandardMaterial("name", scene);
 
   // add continuous sound
   const sound = new BABYLON.Sound(
