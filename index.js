@@ -6,7 +6,7 @@ const createScene = function () {
   const scene = new BABYLON.Scene(engine);
 
   // create box
-  const box = BABYLON.MeshBuilder.CreateBox("box", {});
+  const box = BABYLON.MeshBuilder.CreateBox("box", {width: 2, height: 1.5, depth: 3})
 
   // create  a camera
   const camera = new BABYLON.ArcRotateCamera(
@@ -47,7 +47,7 @@ const createScene = function () {
   // //Leave time for the sound file to load before playing it
   // sound.play();
 
-  
+
   return scene;
 };
 
