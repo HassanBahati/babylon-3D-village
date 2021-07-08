@@ -22,8 +22,11 @@ const createScene = function () {
   box.position.y = 4.2;
   box.position.z = 0.1;
 
-//   or box.position = new BABYLON.Vector3(-2, 4.2, 0.1);
+  //   or box.position = new BABYLON.Vector3(-2, 4.2, 0.1);
 
+  // ORIENTATION - WE ARE TO ROTATAE ALONG 1 AXIS nb: in radians 
+  box.rotation.y = Math.PI / 4;
+  box.rotation.y = BABYLON.Tools.ToRadians(45);
 
   // create  a camera
   const camera = new BABYLON.ArcRotateCamera(
