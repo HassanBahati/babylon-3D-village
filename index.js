@@ -5,11 +5,11 @@ const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engi
 const createScene = function () {
   const scene = new BABYLON.Scene(engine);
 
-  // create box
-  const box = BABYLON.MeshBuilder.CreateBox("box", {}); //unit cube
-  box.scaling.x = 2;
-  box.scaling.y = 1.5;
-  box.scaling.z = 3;
+  //   // create box
+  //   const box = BABYLON.MeshBuilder.CreateBox("box", {}); //unit cube
+  //   box.scaling.x = 2;
+  //   box.scaling.y = 1.5;
+  //   box.scaling.z = 3;
 
   //   REUSUABLE CUBIC BOX
   //   const box = BABYLON.MeshBuilder.CreateBox("box", {}); //unit cube
@@ -17,16 +17,27 @@ const createScene = function () {
   // box.scaling.y = 1.5;
   // box.scaling.z = 3;
 
-  //   box positioning
-  box.position.x = -2;
-  box.position.y = 4.2;
-  box.position.z = 0.1;
+  //   //   box positioning
+  //   box.position.x = -2;
+  //   box.position.y = 4.2;
+  //   box.position.z = 0.1;
 
   //   or box.position = new BABYLON.Vector3(-2, 4.2, 0.1);
 
-  // ORIENTATION - WE ARE TO ROTATAE ALONG 1 AXIS nb: in radians 
-  box.rotation.y = Math.PI / 4;
-  box.rotation.y = BABYLON.Tools.ToRadians(45);
+  // ORIENTATION - WE ARE TO ROTATAE ALONG 1 AXIS nb: in radians
+  //   box.rotation.y = Math.PI / 4;
+  //   box.rotation.y = BABYLON.Tools.ToRadians(45);
+
+  const box = BABYLON.MeshBuilder.CreateBox("box", {});
+  box.position.y = 0.5;
+  const roof = BABYLON.MeshBuilder.CreateCylinder("roof", {
+    diameter: 1.3,
+    height: 1.2,
+    tessellation: 3,
+  });
+  roof.scaling.x = 0.75;
+  roof.rotation.z = Math.PI / 2;
+  roof.position.y = 1.22;
 
   // create  a camera
   const camera = new BABYLON.ArcRotateCamera(
