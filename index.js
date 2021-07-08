@@ -17,6 +17,14 @@ const createScene = function () {
   // box.scaling.y = 1.5;
   // box.scaling.z = 3;
 
+  //   box positioning
+  box.position.x = -2;
+  box.position.y = 4.2;
+  box.position.z = 0.1;
+
+//   or box.position = new BABYLON.Vector3(-2, 4.2, 0.1);
+
+
   // create  a camera
   const camera = new BABYLON.ArcRotateCamera(
     "camera",
